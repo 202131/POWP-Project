@@ -1,37 +1,14 @@
 # POWP-Project
 
-Szablon projektu dla studentów z wzorców projektowych. 
+WaffleShop
+1.Statement of the Work
+Waffle Shop is a café that sells waffles and drinks. When customers arrive at this cafe, they design the waffle they want according to the kinds of waffles, their ingredients and their prices. In addition, customers can order hot or cold beverages from the menu. The waitress delivers these orders to the cook from the customer. The cook is responsible for making the waffle and preparing the drink according to the order.
 
-Lista wzorców i związanych z nimi funkcjonalności jest podana indywidualnie przez prowadzącego na zajęciach.
+2.Proposed Pattern
+Many design patterrns are applied for solving existing problems in the project. These design patterns are Command Pattern, Simple Factory Pattern, Template Method Pattern and Decorator Pattern.
 
-W ramach projektu mogą byc realizowane takie wzorce jak:
-* Abstract factory (Fabryka abstrakcyjna)
-* Factory method (Metoda wytwórcza)
-* Builder (Budowniczy)
-* Dependency injection
+Firstly, customers create a waffle (Waffle Order) or beverage (Beverage Order) order and the waitress (Invoker) delivers these orders to the cook (Receiver). The cook works with Waffle Factory for waffle and with Beverage Factory for beverage. To do this, the cook uses makeWaffle() and makeBeverage() methods (Simple Factory Pattern).
 
-* Facade (Fasada)
-* Proxy (Pełnomocnik)
-* Adapter (Wrapper)
-* Dekorator
+Waffle Factory create waffle and to do this create Waffle interface. There are two kinds of waffles such as Circular and Square in Waffle Shop and these waffle types implement Waffle interface. The customers had chosen waffle ingredients according to the waffle they had previously wanted. The waffle is decorated according to these waffle ingredients (Decorator Pattern). There are 3 Decorator classes for waffle decoration such as Chocolate Decorator, Fruit Decorator and Condiment Decorator. Cost of the waffle is calculated according to decoration ingredients.
 
-* Strategy (Strategia)
-* Observer (Obserwator)
-* Command
-
-Mogą być też relizowane wzorce: 
-* MVC
-* Publish–subscribe pattern
-* Circuit breaker
-* CQRS
-* Lazy loading
-
-Projekt jest realizowany w dowolnym języku obiektowym znanym przez studenta, ale zalecany jest C# jako opcja do poznania rożnic między Java z pierwszej części zajęć, a tym językiem. 
-
-Oddanie cześci projektu na zajęciach uprawnia studenta do zaliczenia w formie zaocznej projektu -> poprzez sam pull request.
-
-Na ocene składać się bedzie:
-1. Poprawnie zrealizowane funkcje biznesowe zadane studentowi
-2. Poprawnie zrealizowane wzorce przez studenta
-3. Poprawnie napisany kod zgodnie ze standardami dla danego języka programowania
-4. Opis uruchomienia aplikacji jeśli zostanie wybrana inna technologia niż C#
+Finally, Beverage Factory is responsible for hot and cold beverages creation and creates Beverage interface. Hot Beverage and Cold Beverage classes implement this interface. Subclasses such as tea, coffee, cola etc. extend these classes. The distinction between them is the difference in the preparation of hot and cold beverages (Template Method Pattern). Also, there are some differences in subclasses. Finally, hook() is used for each beverage and the customer is asked if some extra condiments are wanted.
